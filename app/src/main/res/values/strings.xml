@@ -3,6 +3,10 @@
     <string name="navigation_home">Bitcoin</string>
     <string name="navigation_exchanges">Exchanges</string>
     <string name="navigation_alert">Alertas</string>
+    <string name="label_value">Cotação</string>
+    <string name="label_max">Máximo</string>
+    <string name="label_min">Minimo</string>
+    <string name="label_volume">Volume</string>
 
 
     <string name="title_home">Home</string>
