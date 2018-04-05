@@ -157,11 +157,12 @@
                 android:layout_marginBottom="5dp">
 
                 <TextView
+                    android:id="@+id/text_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="12sp"
-                    android:text="Atualizado em "
+                    android:text=""
                     android:textColor="@color/grayLight"/>
 
             </LinearLayout>

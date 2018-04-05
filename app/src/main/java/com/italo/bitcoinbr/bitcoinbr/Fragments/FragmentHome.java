@@ -1,9 +1,11 @@
 package com.italo.bitcoinbr.bitcoinbr.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.italo.bitcoinbr.bitcoinbr.models.Value;
 import com.italo.bitcoinbr.bitcoinbr.service.BaseCallback;
 import com.italo.bitcoinbr.bitcoinbr.service.ServerHandler;
 import com.italo.bitcoinbr.bitcoinbr.uteis.Uteis;
+
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,6 +43,8 @@ public class FragmentHome extends Fragment {
     TextView volBtc;
     @Bind(R.id.card_view)
     CardView cardView;
+    @Bind(R.id.text_date)
+    TextView date;
 
     private ProgressBar progressBar;
     public static FragmentHome newInstance() {
@@ -67,13 +73,20 @@ public class FragmentHome extends Fragment {
         start();
         Call<Value> valueCall = ServerHandler.getApiInstance().getValues();
         valueCall.enqueue(new BaseCallback<Value>() {
+            @SuppressLint("StringFormatMatches")
             @Override
             public void onResponse(Response<Value> response, Retrofit retrofit) {
                stop();
-               valueBtc.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLast()));
-               valueHigh.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getHigh()));
-               valueLow.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLow()));
-               volBtc.setText(response.body().getTicker24().getTotal().getVol());
+
+               if(response.body()!=null){
+                   valueBtc.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLast()));
+                   valueHigh.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getHigh()));
+                   valueLow.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLow()));
+                   volBtc.setText(response.body().getTicker24().getTotal().getVol());
+                   Date d = new Date();
+                   date.setText(Html.fromHtml(String.format(getContext().getString(R.string.label_date_value),Uteis.gereData(), Uteis.getHour())));
+               }
+
             }
 
             @Override

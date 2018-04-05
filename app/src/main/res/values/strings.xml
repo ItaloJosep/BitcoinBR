@@ -7,7 +7,7 @@
     <string name="label_max">Máximo</string>
     <string name="label_min">Minimo</string>
     <string name="label_volume">Volume</string>
-    <string name="label_date_value"></string>
+    <string name="label_date_value">Atualizado em %1$s às %2$s</string>
 
 
     <string name="title_home">Home</string>
