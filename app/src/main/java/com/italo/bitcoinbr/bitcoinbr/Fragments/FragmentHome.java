@@ -79,6 +79,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void onFailure(Throwable t) {
                 stop();
+                Uteis.showSnackbar(getContext(),getString(R.string.erro_conection));
             }
         });
     }

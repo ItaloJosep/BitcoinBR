@@ -9,6 +9,7 @@
     <color name="card_home">#FFEFDA7E</color>
     <color name="background">#4e4d55</color>
     <color name="backgroundLigth">#999999</color>
+    <color name="grayLight">#9b9b9b</color>
     <color name="yelow">#fecc0b</color>
     <color name="value_max">#18ae01</color>
     <color name="value_min">#F7040C</color>
