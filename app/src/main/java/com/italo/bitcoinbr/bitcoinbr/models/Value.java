@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by italo.josep on 05/04/2018.
  */
 
-public class values {
+public class Value {
 
-    public values(){}
+    public Value(){}
 
     @JsonProperty("ticker_24h") private Ticker ticker24;
     @JsonProperty("ticker_12h") private Ticker ticker12;
