@@ -12,5 +12,5 @@ import retrofit.http.GET;
 public interface ServiceBitcoin {
 
         @GET("ticker.json")
-        Call<Value> getValores();
+        Call<Value> getValues();
 }
