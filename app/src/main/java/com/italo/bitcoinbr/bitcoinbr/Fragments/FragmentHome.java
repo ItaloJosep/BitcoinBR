@@ -2,6 +2,7 @@ package com.italo.bitcoinbr.bitcoinbr.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.italo.bitcoinbr.bitcoinbr.R;
+import com.italo.bitcoinbr.bitcoinbr.cache.PreferenceHandler;
 import com.italo.bitcoinbr.bitcoinbr.models.Value;
 import com.italo.bitcoinbr.bitcoinbr.service.BaseCallback;
 import com.italo.bitcoinbr.bitcoinbr.service.ServerHandler;
@@ -77,25 +79,27 @@ public class FragmentHome extends Fragment {
             @Override
             public void onResponse(Response<Value> response, Retrofit retrofit) {
                stop();
-
-               if(response.body()!=null){
-                   valueBtc.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLast()));
-                   valueHigh.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getHigh()));
-                   valueLow.setText(Uteis.FormatMoney(response.body().getTicker24().getTotal().getLow()));
-                   volBtc.setText(response.body().getTicker24().getTotal().getVol());
-                   Date d = new Date();
-                   date.setText(Html.fromHtml(String.format(getContext().getString(R.string.label_date_value),Uteis.gereData(), Uteis.getHour())));
-               }
-
+                PreferenceHandler.saveTicker(response.body());
+                PreferenceHandler.saveDate(Html.fromHtml(String.format(getContext().getString(R.string.label_date_value), Uteis.gereData(), Uteis.getHour())));
+                setText(response.body());
             }
-
             @Override
             public void onFailure(Throwable t) {
                 stop();
                 Uteis.showSnackbar(getContext(),getString(R.string.erro_conection));
+                setText(PreferenceHandler.getTicker());
             }
         });
     }
+
+    public void setText(Value value){
+        valueBtc.setText(Uteis.FormatMoney(value.getTicker24().getTotal().getLast()));
+        valueHigh.setText(Uteis.FormatMoney(value.getTicker24().getTotal().getHigh()));
+        valueLow.setText(Uteis.FormatMoney(value.getTicker24().getTotal().getLow()));
+        volBtc.setText(value.getTicker24().getTotal().getVol());
+        date.setText(PreferenceHandler.getDate());
+    }
+
 
     @OnClick(R.id.card_view) void clickCard(){
         getTicker();

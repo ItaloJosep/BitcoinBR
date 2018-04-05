@@ -13,6 +13,7 @@ import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentAlert;
 import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentExchange;
 import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentHome;
 import com.italo.bitcoinbr.bitcoinbr.R;
+import com.italo.bitcoinbr.bitcoinbr.cache.PreferenceHandler;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         inicializaFragment(SELECTION_HOME);
+        PreferenceHandler.init(this);
     }
 
     public void inicializaFragment(int selection){
