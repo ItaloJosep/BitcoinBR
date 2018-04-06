@@ -94,13 +94,19 @@ public class FragmentHome extends Fragment {
                 }
         );
 
+        getTicker();
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        getTicker();
+
+        if(PreferenceHandler.getTicker()!=null){
+            setText(PreferenceHandler.getTicker());
+        }
+
     }
 
     public void getTicker(){

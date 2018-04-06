@@ -9,7 +9,9 @@
     <string name="label_best_sell">Melhor exchange para vender</string>
     <string name="label_min">Minimo</string>
     <string name="label_volume">Volume</string>
+    <string name="label_trade">Trades</string>
     <string name="label_date_value">Atualizado em %1$s às %2$s</string>
+    <string name="msg_erro_exchange">Não foi possivel carregar a \nlista de exchange</string>
 
 
     <string name="title_home">Home</string>
