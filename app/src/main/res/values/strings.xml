@@ -5,6 +5,8 @@
     <string name="navigation_alert">Alertas</string>
     <string name="label_value">Cotação</string>
     <string name="label_max">Máximo</string>
+    <string name="label_best_buy">Melhor exchange para comprar</string>
+    <string name="label_best_sell">Melhor exchange para vender</string>
     <string name="label_min">Minimo</string>
     <string name="label_volume">Volume</string>
     <string name="label_date_value">Atualizado em %1$s às %2$s</string>

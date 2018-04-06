@@ -37,10 +37,19 @@ public class Uteis {
                         .text(message));
     }
 
+    @SuppressLint("NewApi")
+    public static String FormatVol(String vol){
+        double volDouble = Double.parseDouble(vol);
+//        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        DecimalFormat decimalFormat = new DecimalFormat("#.#####");
+        vol = decimalFormat.format(volDouble);
+        return vol;
+    }
+
     public static String gereData(){
         Calendar cal = Calendar.getInstance();
         Date currentDate = cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDateString = dateFormat.format(currentDate);
         return formattedDateString;
     }
