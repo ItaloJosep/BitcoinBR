@@ -16,4 +16,10 @@
         android:icon="@drawable/ic_alarm"
         android:title="@string/navigation_alert" />
 
+    <item
+        android:id="@+id/navigation_top"
+        android:icon="@drawable/ic_ranking"
+        android:title="@string/navigation_ranking"
+        />
+
 </menu>

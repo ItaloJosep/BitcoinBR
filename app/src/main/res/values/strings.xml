@@ -17,6 +17,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="navigation_ranking">Ranking</string>
     <string name="erro_conection">Não foi possível realizar essa ação.</string>
 
 </resources>

@@ -12,8 +12,10 @@ import android.widget.FrameLayout;
 import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentAlert;
 import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentExchange;
 import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentHome;
+import com.italo.bitcoinbr.bitcoinbr.Fragments.FragmentRanking;
 import com.italo.bitcoinbr.bitcoinbr.R;
 import com.italo.bitcoinbr.bitcoinbr.cache.PreferenceHandler;
+import com.italo.bitcoinbr.bitcoinbr.uteis.BottomNavigationViewHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private FragmentHome homeFragment;
     private FragmentExchange exchangeFragment;
     private FragmentAlert alertFragment;
+    private FragmentRanking rankingFragment;
+    private  BottomNavigationView bottomNavigationView;
 
     private final int SELECTION_HOME = 0;
     private final int SELECTION_EXCHANGE = 1;
     private final int SELECTION_ALERT = 2;
+    private final int SELECTION_RANKING = 3;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -49,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     inicializaFragment(SELECTION_ALERT);
                     return true;
+                case R.id.navigation_top:
+                    inicializaFragment(SELECTION_RANKING);
+                    return true;
             }
             return false;
         }
@@ -60,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         inicializaFragment(SELECTION_HOME);
         PreferenceHandler.init(this);
     }
@@ -85,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                 if (alertFragment == null)
                     alertFragment = FragmentAlert.newInstance();
                 return alertFragment;
+            }else if(SELECTION_RANKING == selection) {
+                if ( rankingFragment == null)
+                    rankingFragment = FragmentRanking.newInstance();
+                return rankingFragment;
             }
         return null;
     }
